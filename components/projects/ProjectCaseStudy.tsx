@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Project } from "@/data/projects";
-import { Github, CheckCircle2, ShieldAlert } from "lucide-react";
+import { Github, CheckCircle2, ShieldAlert, ArrowRight } from "lucide-react";
 import { AthleteIqArchSvg } from "@/components/svg/AthleteIqArchSvg";
 import { AiReceptionistArchSvg } from "@/components/svg/AiReceptionistArchSvg";
 import { AlphaLeadEngineArchSvg } from "@/components/svg/AlphaLeadEngineArchSvg";
@@ -142,7 +143,7 @@ export function ProjectCaseStudy({ project, isEven }: Props) {
 
           {/* Action Links & "What this demonstrates" */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[rgba(10,39,71,0.08)]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
@@ -154,6 +155,13 @@ export function ProjectCaseStudy({ project, isEven }: Props) {
                   <span>GitHub Repository</span>
                 </a>
               )}
+              <Link
+                href={`/projects/${project.slug}`}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#B98945] hover:text-[#0A2747] transition-colors group"
+              >
+                <span>View Full Case Study</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
             </div>
 
             <div className="text-[11px] font-mono text-[#5A738E] italic">

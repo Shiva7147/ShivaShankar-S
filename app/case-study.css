@@ -1,0 +1,147 @@
+/* ─────────────────────────────────────────────────────────
+   DARK CASE STUDY THEME — Apple-style
+   These classes are scoped to [data-theme="dark"] sections
+───────────────────────────────────────────────────────── */
+
+.cs-page {
+  background-color: #030712;
+  color: #F0F6FC;
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+.cs-surface {
+  background-color: #0D1117;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+}
+
+.cs-surface-2 {
+  background-color: #161B22;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.cs-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--wrap-pad);
+  padding-right: var(--wrap-pad);
+}
+
+.cs-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #8B949E;
+}
+
+.cs-heading-display {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #F0F6FC;
+}
+
+.cs-heading-h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #F0F6FC;
+}
+
+.cs-heading-h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #F0F6FC;
+}
+
+.cs-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #8B949E;
+}
+
+.cs-body-bright {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #C9D1D9;
+}
+
+.cs-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #F0F6FC;
+  color: #0D1117;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.cs-btn-primary:hover {
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.cs-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #F0F6FC;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.cs-btn-ghost:hover {
+  border-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+
+.cs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #8B949E;
+  background-color: rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+
+/* Tech category colors */
+.cs-cat-frontend { color: #38BDF8; }
+.cs-cat-backend { color: #34D399; }
+.cs-cat-ai { color: #A78BFA; }
+.cs-cat-database { color: #F59E0B; }
+.cs-cat-infra { color: #6B7280; }
+.cs-cat-api { color: #F97316; }

@@ -1,136 +1,113 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from "react";
+import { Phone, Radio, Calendar, Database, Activity, ArrowRight, ArrowDown } from "lucide-react";
 
-// Alpha Studi0 AI Receptionist — vertical phone call pipeline
 export function ReceptionistArchSvg() {
-  const nodes = [
-    { id: "customer", label: "Customer", sub: "Inbound Call", color: "#38BDF8", y: 0 },
-    { id: "twilio", label: "Twilio", sub: "PSTN / WebSocket", color: "#F97316", y: 100 },
-    { id: "elevenlabs", label: "ElevenLabs", sub: "Voice AI / STT", color: "#A78BFA", y: 200 },
-    { id: "gemini", label: "Google Gemini", sub: "LLM Reasoning", color: "#34D399", y: 300 },
-    { id: "kb", label: "Knowledge Base", sub: "Business Context", color: "#F59E0B", y: 400 },
-    { id: "tools", label: "Tool Calling", sub: "Agent Execution", color: "#3B82F6", y: 500 },
-  ];
-
-  const sideNodes = [
-    { id: "calendar", label: "Google Calendar", color: "#4ADE80", x: 280, y: 500 },
-    { id: "crm", label: "CRM", color: "#FB7185", x: 280, y: 560 },
-    { id: "supabase", label: "Supabase", color: "#34D399", x: 280, y: 620 },
-    { id: "analytics", label: "Analytics", color: "#F59E0B", x: 280, y: 680 },
-  ];
-
   return (
-    <div className="w-full overflow-x-auto">
-      <svg
-        viewBox="0 0 560 760"
-        className="w-full max-w-lg mx-auto"
-        style={{ height: "auto" }}
-      >
-        {/* Background */}
-        <defs>
-          <linearGradient id="recep-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#0D1117" />
-            <stop offset="100%" stopColor="#030712" />
-          </linearGradient>
-          {/* Glow filter */}
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          {/* Animated dash */}
-          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-            <path d="M0,0 L0,8 L8,4 z" fill="rgba(255,255,255,0.25)" />
-          </marker>
-        </defs>
+    <div className="w-full bg-[#FFFEFA] border border-[rgba(10,39,71,0.14)] rounded-lg p-5 sm:p-6 shadow-xs space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[rgba(10,39,71,0.08)]">
+        <div>
+          <span className="font-mono text-[11px] text-[#2563EB] font-semibold tracking-wider uppercase block">
+            REAL-TIME VOICE AI PIPELINE
+          </span>
+          <h4 className="font-sans font-bold text-base text-[#0A2747] mt-0.5">
+            Alpha Studi0 Sub-Second Voice Architecture
+          </h4>
+        </div>
+        <span className="text-[10px] font-mono text-[#059669] bg-[#059669]/10 px-2.5 py-1 rounded border border-[#059669]/20 self-start sm:self-auto font-bold">
+          Sub-Second Latency
+        </span>
+      </div>
 
-        <rect width="560" height="760" fill="url(#recep-bg)" rx="12" />
+      {/* Main Real-Time Voice Flow */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+        {/* Step 1: Inbound Call */}
+        <div className="lg:col-span-3 p-4 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[10px] text-[#5A738E] font-semibold">1. INBOUND CALL</span>
+            <Phone className="w-3.5 h-3.5 text-[#2563EB]" />
+          </div>
+          <div className="font-sans font-bold text-sm text-[#0A2747]">Twilio PSTN</div>
+          <div className="text-[11px] font-mono text-[#5A738E]">WebSocket Audio Stream</div>
+        </div>
 
-        {/* Main vertical pipeline */}
-        {nodes.map((node, i) => {
-          const cx = 140;
-          const cy = node.y + 50;
-          const lineDelay = i * 0.12 + 0.2;
-          return (
-            <motion.g key={node.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.12 }}>
-              {/* Connector line */}
-              {i < nodes.length - 1 && (
-                <motion.line
-                  x1={cx} y1={cy + 24} x2={cx} y2={cy + 74}
-                  stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4 4"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ pathLength: { duration: 0.6, delay: lineDelay, ease: "easeInOut" }, opacity: { duration: 0.1, delay: lineDelay } }}
-                />
-              )}
-              {/* Node circle */}
-              <circle cx={cx} cy={cy} r={22} fill={`${node.color}15`} stroke={`${node.color}50`} strokeWidth="1.5" />
-              <circle cx={cx} cy={cy} r={8} fill={node.color} opacity={0.9} filter="url(#glow)" />
+        <div className="hidden lg:flex lg:col-span-1 justify-center text-[#2563EB]">
+          <ArrowRight className="w-4 h-4" />
+        </div>
+        <div className="flex lg:hidden justify-center text-[#2563EB] py-1">
+          <ArrowDown className="w-4 h-4" />
+        </div>
 
-              {/* Label to the right */}
-              <text x={cx + 34} y={cy - 6} fill="#F0F6FC" fontSize="13" fontWeight="600" fontFamily="system-ui">
-                {node.label}
-              </text>
-              <text x={cx + 34} y={cy + 10} fill="#8B949E" fontSize="10" fontFamily="system-ui">
-                {node.sub}
-              </text>
-            </motion.g>
-          );
-        })}
+        {/* Step 2: Voice & LLM Engine */}
+        <div className="lg:col-span-4 p-4 rounded bg-[#FFFEFA] border-2 border-[#2563EB] shadow-xs space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[10px] text-[#2563EB] font-bold">REASONING & VOICE</span>
+            <Radio className="w-4 h-4 text-[#2563EB]" />
+          </div>
+          <div className="space-y-1 font-mono text-[11px]">
+            <div className="p-1.5 rounded bg-[#7C3AED]/10 text-[#7C3AED] font-bold border border-[#7C3AED]/20">
+              ElevenLabs (Streaming STT/TTS)
+            </div>
+            <div className="p-1.5 rounded bg-[#2563EB]/10 text-[#2563EB] font-bold border border-[#2563EB]/20">
+              Google Gemini 2.0 Flash (LLM)
+            </div>
+          </div>
+        </div>
 
-        {/* Horizontal connector from Tool Calling to side nodes */}
-        <motion.line
-          x1={162} y1={550} x2={240} y2={550}
-          stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="4 4"
-          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.9, duration: 0.4 }}
-        />
+        <div className="hidden lg:flex lg:col-span-1 justify-center text-[#2563EB]">
+          <ArrowRight className="w-4 h-4" />
+        </div>
+        <div className="flex lg:hidden justify-center text-[#2563EB] py-1">
+          <ArrowDown className="w-4 h-4" />
+        </div>
 
-        {/* Vertical connector on the right side */}
-        <motion.line
-          x1={240} y1={500} x2={240} y2={700}
-          stroke="rgba(255,255,255,0.08)" strokeWidth="1"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }}
-        />
+        {/* Step 3: Real-Time Tool Actions */}
+        <div className="lg:col-span-3 space-y-2">
+          <div className="p-2.5 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2">
+            <Calendar className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+            <div>
+              <div className="font-sans font-bold text-xs text-[#0A2747]">Google Calendar API</div>
+              <div className="text-[10px] font-mono text-[#059669]">Live Booking</div>
+            </div>
+          </div>
 
-        {/* Side nodes */}
-        {sideNodes.map((node, i) => (
-          <motion.g
-            key={node.id}
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.0 + i * 0.1 }}
-          >
-            <motion.line
-              x1={240} y1={node.y} x2={256} y2={node.y}
-              stroke="rgba(255,255,255,0.12)" strokeWidth="1"
-            />
-            <circle cx={270} cy={node.y} r={6} fill={node.color} opacity={0.8} />
-            <text x={284} y={node.y + 4} fill="#C9D1D9" fontSize="11" fontFamily="system-ui">
-              {node.label}
-            </text>
-          </motion.g>
-        ))}
+          <div className="p-2.5 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2">
+            <Database className="w-3.5 h-3.5 text-[#B98945] shrink-0" />
+            <div>
+              <div className="font-sans font-bold text-xs text-[#0A2747]">Supabase Multi-Tenant</div>
+              <div className="text-[10px] font-mono text-[#B98945]">RLS Data Isolation</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        {/* "Data Flow" animated particle */}
-        <motion.circle r="4" fill="#3B82F6" opacity={0.8} filter="url(#glow)">
-          <animateMotion
-            dur="3s"
-            repeatCount="indefinite"
-            path="M140,50 L140,150 L140,250 L140,350 L140,450 L140,550"
-          />
-        </motion.circle>
+      {/* Async Intelligence Pipeline */}
+      <div className="p-4 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-2">
+        <div className="flex items-center gap-2 text-[#0A2747]">
+          <Activity className="w-4 h-4 shrink-0 text-[#2563EB]" />
+          <span className="font-mono text-xs font-bold uppercase tracking-wider">
+            POST-CALL ASYNCHRONOUS INTELLIGENCE PIPELINE
+          </span>
+        </div>
 
-        {/* Title */}
-        <text x="300" y="48" fill="#F0F6FC" fontSize="13" fontWeight="700" textAnchor="middle" fontFamily="system-ui">
-          Alpha Studi0 Architecture
-        </text>
-        <text x="300" y="66" fill="#484F58" fontSize="10" textAnchor="middle" fontFamily="monospace">
-          Real-time Voice AI Pipeline
-        </text>
-      </svg>
+        <p className="text-xs text-[#5A738E] leading-relaxed">
+          Decoupled from live audio stream: Fastify queue processes transcript asynchronously for zero-latency call performance.
+        </p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#FFFEFA] text-[#0A2747] border border-[rgba(10,39,71,0.12)]">
+            Transcript Processing
+          </span>
+          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#FFFEFA] text-[#0A2747] border border-[rgba(10,39,71,0.12)]">
+            AI Lead Scoring
+          </span>
+          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#2563EB] text-white font-bold">
+            Analytics Dashboard Push
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

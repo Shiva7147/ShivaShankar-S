@@ -20,32 +20,32 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
   const Diagram = archMap[project.slug];
 
   return (
-    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
+    <section className="py-16 md:py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="mb-12"
+          className="mb-8"
         >
-          <p className="cs-eyebrow mb-4">Architecture</p>
+          <p className="cs-eyebrow mb-3">Architecture</p>
           <h2 className="cs-heading-h2">System Design</h2>
         </motion.div>
 
-        {/* SVG Diagram */}
+        {/* Diagram */}
         {Diagram ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="cs-surface p-6 md:p-10 mb-8"
+            className="mb-10"
           >
             {Diagram}
           </motion.div>
         ) : (
-          <div className="cs-surface p-12 text-center text-[#5A738E] font-mono text-sm mb-8">
+          <div className="cs-surface p-10 text-center text-[#5A738E] font-mono text-sm mb-10">
             Architecture diagram coming soon
           </div>
         )}
@@ -53,7 +53,7 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
         {/* Engineering Decisions */}
         {project.engineeringDecisions.length > 0 && (
           <div className="space-y-3">
-            <p className="cs-eyebrow mb-5">Key Engineering Decisions</p>
+            <p className="cs-eyebrow mb-4">Key Engineering Decisions</p>
             {project.engineeringDecisions.map((d, i) => (
               <motion.div
                 key={i}
@@ -61,7 +61,7 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.38, delay: i * 0.08 }}
-                className="flex items-start gap-4 cs-surface p-5"
+                className="flex items-start gap-3.5 cs-surface p-4.5"
               >
                 <span className="text-[#B98945] font-bold text-base mt-0.5 flex-shrink-0">✦</span>
                 <p className="text-small text-[#12375F] leading-relaxed">{d}</p>

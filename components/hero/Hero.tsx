@@ -9,9 +9,9 @@ import { HeroSystemSvg } from "@/components/svg/HeroSystemSvg";
 
 export function Hero() {
   return (
-    <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[rgba(10,39,71,0.12)]">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="wrap">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Copy & Positioning */}
           <div className="lg:col-span-7 space-y-6">
             {/* Availability Status Badge */}
@@ -48,7 +48,7 @@ export function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link href="/projects" className="btn-primary">
                 <span>Explore All 5 Projects</span>
                 <ArrowRight className="w-4 h-4" />
@@ -77,11 +77,15 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Architectural Dome Portrait & System Flow */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center gap-8">
+          {/* Right Column: Architectural Dome Portrait */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <HeroDomePortrait />
-            <HeroSystemSvg />
           </div>
+        </div>
+
+        {/* Full-width System Flow Workflow Card Below */}
+        <div className="mt-12">
+          <HeroSystemSvg />
         </div>
       </div>
     </section>

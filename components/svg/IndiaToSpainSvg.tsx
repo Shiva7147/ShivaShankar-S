@@ -4,7 +4,7 @@ import React from "react";
 
 export function IndiaToSpainSvg() {
   return (
-    <div className="w-full relative my-6">
+    <div className="w-full relative my-4">
       <svg
         className="w-full h-auto max-h-[160px]"
         viewBox="0 0 680 140"
@@ -35,7 +35,7 @@ export function IndiaToSpainSvg() {
         {/* Background Subtle Arc Line */}
         <path
           d="M 120 75 Q 340 15 560 75"
-          stroke="rgba(10,39,71,0.12)"
+          stroke="rgba(10,39,71,0.14)"
           strokeWidth="1.5"
           fill="none"
           strokeDasharray="4 4"
@@ -67,10 +67,11 @@ export function IndiaToSpainSvg() {
           </text>
         </g>
 
-        {/* Direction Arrow in Center */}
-        <g transform="translate(340, 42)">
-          <rect x="-45" y="-12" width="90" height="24" rx="12" fill="#FFFEFA" stroke="rgba(185,137,69,0.3)" strokeWidth="1" />
-          <text x="0" y="3" textAnchor="middle" fill="#5A738E" fontSize="9" fontWeight="600" fontFamily="JetBrains Mono" letterSpacing="0.1em">
+        {/* Direction Badge in Center with Solid Masking Background */}
+        <g transform="translate(340, 45)">
+          {/* Solid fill rect masks out the dashed arc behind it */}
+          <rect x="-60" y="-14" width="120" height="28" rx="14" fill="#F6F3EC" stroke="#B98945" strokeWidth="1.5" />
+          <text x="0" y="4" textAnchor="middle" fill="#0A2747" fontSize="10" fontWeight="700" fontFamily="JetBrains Mono" letterSpacing="0.08em">
             INTERNATIONAL ↗
           </text>
         </g>

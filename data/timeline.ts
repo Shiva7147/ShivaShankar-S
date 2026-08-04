@@ -15,7 +15,7 @@ export const timelineData: TimelineEntry[] = [
   },
   {
     year: "2025 – 2027",
-    title: "Master of Computer Applications (MCA — Expected)",
+    title: "Master of Computer Applications (MCA)",
     subtitle: "St Joseph's University, Bengaluru",
     description: "Currently pursuing Master's degree with dedicated focus on AI/ML engineering, RAG systems, LangGraph agentic architectures, tool-calling systems, and LLM evaluation harnesses."
   },

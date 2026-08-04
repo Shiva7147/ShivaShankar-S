@@ -10,7 +10,7 @@ export const timelineData: TimelineEntry[] = [
   {
     year: "2022 – 2025",
     title: "Bachelor of Computer Applications (BCA)",
-    subtitle: "Christ University, Bengaluru",
+    subtitle: "Kristu Jayanti (Deemed to be University), Bengaluru",
     description: "Completed undergraduate degree in computer applications. Built practical experience in software development, web engineering, databases, and big data analytics coursework (Hadoop, MapReduce, NoSQL, Hive, Pig)."
   },
   {

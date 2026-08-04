@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "@/app/case-study.css";
 import { projectsData } from "@/data/projects";
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/footer/Footer";
 import { CaseStudyHero } from "@/components/casestudy/CaseStudyHero";
 import { CaseStudyOverview } from "@/components/casestudy/CaseStudyOverview";
 import { CaseStudyArchitecture } from "@/components/casestudy/CaseStudyArchitecture";
@@ -38,33 +40,22 @@ export default async function CaseStudyPage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <main className="cs-page">
-      <CaseStudyHero project={project} />
-      <CaseStudyOverview project={project} />
-      <CaseStudyArchitecture project={project} />
-      <TechStackGrid project={project} />
-      <FeaturesGrid project={project} />
-      <WorkflowTimeline project={project} />
-      <DeviceMockups project={project} />
-      <ChallengesSection project={project} />
-      <ResultsSection project={project} />
-      <RoadmapSection project={project} />
-      <GitHubSection project={project} />
-
-      {/* Footer */}
-      <footer className="py-16 text-center border-t border-[rgba(255,255,255,0.06)]">
-        <div className="cs-wrap">
-          <p className="text-[#484F58] font-mono text-xs">
-            Built by{" "}
-            <span className="text-[#8B949E]">Shiva Shankar S</span>
-            {" · "}
-            Powered by{" "}
-            <span style={{ color: project.accent }}>Alpha Studi0</span>
-            {" · "}
-            Designed with modern enterprise aesthetics
-          </p>
-        </div>
-      </footer>
-    </main>
+    <div className="min-h-screen flex flex-col cs-page">
+      <Navbar />
+      <main id="main-content" className="flex-1">
+        <CaseStudyHero project={project} />
+        <CaseStudyOverview project={project} />
+        <CaseStudyArchitecture project={project} />
+        <TechStackGrid project={project} />
+        <FeaturesGrid project={project} />
+        <WorkflowTimeline project={project} />
+        <DeviceMockups project={project} />
+        <ChallengesSection project={project} />
+        <ResultsSection project={project} />
+        <RoadmapSection project={project} />
+        <GitHubSection project={project} />
+      </main>
+      <Footer />
+    </div>
   );
 }

@@ -3,142 +3,137 @@
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
 
-// SVG-rendered dashboard mockup that looks like a dark analytics UI
-function DashboardMockup({ accent }: { accent: string }) {
+// SVG-rendered dashboard mockup — cream/navy palette to match site
+function DashboardMockup() {
   return (
-    <svg viewBox="0 0 480 300" style={{ width: "100%", height: "auto", borderRadius: 8 }}>
-      {/* Screen bg */}
-      <rect width="480" height="300" fill="#0D1117" rx="8" />
+    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 6 }}>
+      <rect width="480" height="280" fill="#FFFEFA" />
       {/* Sidebar */}
-      <rect x="0" y="0" width="60" height="300" fill="#161B22" />
-      {[40, 90, 140, 190, 240].map((y) => (
-        <rect key={y} x="16" y={y} width="28" height="5" rx="2" fill="rgba(255,255,255,0.1)" />
+      <rect x="0" y="0" width="56" height="280" fill="#F6F3EC" />
+      {[36, 76, 116, 156, 196].map((y) => (
+        <rect key={y} x="14" y={y} width="28" height="5" rx="2" fill="rgba(10,39,71,0.08)" />
       ))}
-      <circle cx="30" cy="20" r="8" fill={`${accent}60`} />
+      <rect x="14" y="20" width="28" height="8" rx="2" fill="rgba(185,137,69,0.3)" />
 
       {/* Topbar */}
-      <rect x="60" y="0" width="420" height="36" fill="#161B22" />
-      <rect x="76" y="14" width="80" height="8" rx="3" fill="rgba(255,255,255,0.07)" />
-      <circle cx="448" cy="18" r="8" fill={`${accent}50`} />
+      <rect x="56" y="0" width="424" height="36" fill="#F6F3EC" />
+      <rect x="70" y="13" width="90" height="10" rx="3" fill="rgba(10,39,71,0.07)" />
+      <rect x="420" y="12" width="48" height="12" rx="3" fill="rgba(185,137,69,0.2)" />
 
-      {/* Stat cards row */}
+      {/* Stat cards */}
       {[0, 1, 2, 3].map((i) => (
         <g key={i}>
-          <rect x={76 + i * 96} y={50} width="88" height="56" rx="6"
-            fill="#161B22" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-          <rect x={84 + i * 96} y={62} width={32 + i * 4} height="6" rx="2" fill={`${accent}40`} />
-          <rect x={84 + i * 96} y={76} width="52" height="4" rx="2" fill="rgba(255,255,255,0.1)" />
-          <rect x={84 + i * 96} y={88} width="36" height="4" rx="2" fill="rgba(255,255,255,0.06)" />
+          <rect x={70 + i * 96} y={50} width="88" height="52" rx="4"
+            fill="#FFFEFA" stroke="rgba(10,39,71,0.10)" strokeWidth="1" />
+          <rect x={78 + i * 96} y={62} width={30 + i * 4} height="5" rx="2" fill="rgba(185,137,69,0.5)" />
+          <rect x={78 + i * 96} y={74} width="52" height="4" rx="2" fill="rgba(10,39,71,0.07)" />
+          <rect x={78 + i * 96} y={84} width="36" height="3" rx="2" fill="rgba(10,39,71,0.04)" />
         </g>
       ))}
 
-      {/* Chart area */}
-      <rect x="76" y="118" width="280" height="120" rx="6" fill="#161B22" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-      {/* Bar chart bars */}
-      {[20, 55, 35, 70, 45, 80, 30, 60, 50, 75].map((h, i) => (
-        <rect key={i} x={90 + i * 26} y={228 - h} width="16" height={h} rx="2"
-          fill={`${accent}${i % 3 === 0 ? "90" : "35"}`} />
+      {/* Bar chart */}
+      <rect x="70" y="114" width="270" height="120" rx="4" fill="#FFFEFA" stroke="rgba(10,39,71,0.08)" strokeWidth="1" />
+      {[18, 50, 30, 65, 40, 72, 28, 55, 44, 68].map((h, i) => (
+        <rect key={i} x={84 + i * 24} y={224 - h} width="14" height={h} rx="2"
+          fill={i % 3 === 0 ? "rgba(185,137,69,0.7)" : "rgba(10,39,71,0.12)"} />
       ))}
-      <rect x="76" y="230" width="280" height="1" fill="rgba(255,255,255,0.08)" />
-      <text x="88" y="112" fill="rgba(255,255,255,0.3)" fontSize="9" fontFamily="monospace">Call Volume</text>
+      <rect x="70" y="225" width="270" height="1" fill="rgba(10,39,71,0.08)" />
 
-      {/* Table area */}
-      <rect x="370" y="118" width="104" height="120" rx="6" fill="#161B22" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+      {/* Side panel */}
+      <rect x="356" y="114" width="108" height="120" rx="4" fill="#FFFEFA" stroke="rgba(10,39,71,0.08)" strokeWidth="1" />
       {[0, 1, 2, 3, 4].map((i) => (
         <g key={i}>
-          <rect x="380" y={130 + i * 22} width="60" height="4" rx="2" fill="rgba(255,255,255,0.08)" />
-          <circle cx="456" cy={132 + i * 22} r="4"
-            fill={i < 2 ? `${accent}80` : i === 2 ? "#34D39980" : "rgba(255,255,255,0.15)"} />
+          <rect x="366" y={126 + i * 20} width="60" height="4" rx="2" fill="rgba(10,39,71,0.07)" />
+          <circle cx="444" cy={128 + i * 20} r="4"
+            fill={i < 2 ? "rgba(185,137,69,0.7)" : i === 2 ? "rgba(18,55,95,0.4)" : "rgba(10,39,71,0.12)"} />
         </g>
       ))}
 
       {/* Bottom bar */}
-      <rect x="76" y="252" width="394" height="36" rx="6" fill="#161B22" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+      <rect x="70" y="248" width="392" height="20" rx="4" fill="#F6F3EC" />
       {[0, 1, 2].map((i) => (
-        <rect key={i} x={88 + i * 120} y="266" width="80" height="8" rx="3" fill="rgba(255,255,255,0.07)" />
+        <rect key={i} x={80 + i * 120} y="254" width="70" height="8" rx="2" fill="rgba(10,39,71,0.06)" />
       ))}
     </svg>
   );
 }
 
-function ConversationMockup({ accent }: { accent: string }) {
+function ConversationMockup() {
   const messages = [
-    { side: "left", w: 180 },
-    { side: "right", w: 140 },
-    { side: "left", w: 220 },
-    { side: "left", w: 160 },
-    { side: "right", w: 100 },
-    { side: "right", w: 180 },
+    { right: false, w: 180 },
+    { right: true, w: 140 },
+    { right: false, w: 210 },
+    { right: false, w: 150 },
+    { right: true, w: 110 },
+    { right: true, w: 170 },
   ];
   return (
-    <svg viewBox="0 0 480 300" style={{ width: "100%", height: "auto", borderRadius: 8 }}>
-      <rect width="480" height="300" fill="#0D1117" rx="8" />
+    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 6 }}>
+      <rect width="480" height="280" fill="#FFFEFA" />
       {/* Header */}
-      <rect x="0" y="0" width="480" height="44" fill="#161B22" />
-      <circle cx="28" cy="22" r="10" fill={`${accent}60`} />
-      <rect x="46" y="16" width="80" height="7" rx="3" fill="rgba(255,255,255,0.12)" />
-      <rect x="46" y="27" width="50" height="5" rx="2" fill={`${accent}40`} />
-      <circle cx="452" cy="22" r="7" fill="rgba(255,255,255,0.08)" />
-      <circle cx="432" cy="22" r="7" fill="rgba(255,255,255,0.08)" />
+      <rect x="0" y="0" width="480" height="44" fill="#F6F3EC" />
+      <circle cx="26" cy="22" r="10" fill="rgba(185,137,69,0.3)" />
+      <rect x="44" y="16" width="80" height="7" rx="3" fill="rgba(10,39,71,0.10)" />
+      <rect x="44" y="27" width="50" height="5" rx="2" fill="rgba(185,137,69,0.4)" />
 
       {/* Messages */}
       {messages.map((m, i) => {
-        const isRight = m.side === "right";
-        const x = isRight ? 480 - m.w - 20 : 20;
-        const y = 60 + i * 36;
+        const x = m.right ? 480 - m.w - 20 : 20;
+        const y = 58 + i * 33;
         return (
           <g key={i}>
-            <rect x={x} y={y} width={m.w} height="24" rx="12"
-              fill={isRight ? `${accent}30` : "#161B22"}
-              stroke={isRight ? `${accent}50` : "rgba(255,255,255,0.08)"} strokeWidth="1" />
-            <rect x={x + 10} y={y + 8} width={m.w - 20} height="8" rx="3"
-              fill={isRight ? `${accent}60` : "rgba(255,255,255,0.1)"} />
+            <rect x={x} y={y} width={m.w} height="22" rx="10"
+              fill={m.right ? "rgba(185,137,69,0.12)" : "#F6F3EC"}
+              stroke={m.right ? "rgba(185,137,69,0.25)" : "rgba(10,39,71,0.08)"} strokeWidth="1" />
+            <rect x={x + 10} y={y + 7} width={m.w - 20} height="8" rx="3"
+              fill={m.right ? "rgba(185,137,69,0.4)" : "rgba(10,39,71,0.08)"} />
           </g>
         );
       })}
 
       {/* Input bar */}
-      <rect x="16" y="264" width="400" height="24" rx="12" fill="#161B22" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-      <rect x="424" y="264" width="40" height="24" rx="12" fill={`${accent}80`} />
+      <rect x="16" y="248" width="396" height="22" rx="10" fill="#F6F3EC" stroke="rgba(10,39,71,0.08)" strokeWidth="1" />
+      <rect x="420" y="248" width="44" height="22" rx="10" fill="rgba(185,137,69,0.7)" />
     </svg>
   );
 }
 
 export function DeviceMockups({ project }: { project: Project }) {
   return (
-    <section className="py-24 border-b border-[rgba(255,255,255,0.06)]">
+    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          transition={{ duration: 0.45 }}
+          className="mb-12"
         >
           <p className="cs-eyebrow mb-4">Interface</p>
-          <h2 className="cs-heading-h2">Dashboard Screens</h2>
+          <h2 className="cs-heading-h2">{project.title} Interface</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.45 }}
             className="cs-surface p-4"
           >
-            <div className="text-xs font-mono text-[#484F58] mb-3 uppercase tracking-widest">Analytics Dashboard</div>
-            <DashboardMockup accent={project.accent} />
+            <p className="font-mono text-[10px] text-[#5A738E] uppercase tracking-widest mb-3">Analytics Dashboard</p>
+            <DashboardMockup />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.45, delay: 0.08 }}
             className="cs-surface p-4"
           >
-            <div className="text-xs font-mono text-[#484F58] mb-3 uppercase tracking-widest">Conversation View</div>
-            <ConversationMockup accent={project.accent} />
+            <p className="font-mono text-[10px] text-[#5A738E] uppercase tracking-widest mb-3">Conversation View</p>
+            <ConversationMockup />
           </motion.div>
         </div>
       </div>

@@ -13,33 +13,36 @@ const CAT_LABELS: Record<string, string> = {
 };
 
 const CAT_COLORS: Record<string, string> = {
-  frontend: "#38BDF8",
-  backend: "#34D399",
-  ai: "#A78BFA",
-  database: "#F59E0B",
-  infra: "#6B7280",
-  api: "#F97316",
+  frontend: "#2563EB",
+  backend: "#059669",
+  ai: "#7C3AED",
+  database: "#B98945",
+  infra: "#5A738E",
+  api: "#D97706",
 };
 
 export function TechStackGrid({ project }: { project: Project }) {
-  const byCategory = project.techDetails.reduce<Record<string, typeof project.techDetails>>((acc, t) => {
-    if (!acc[t.category]) acc[t.category] = [];
-    acc[t.category].push(t);
-    return acc;
-  }, {});
+  const byCategory = project.techDetails.reduce<Record<string, typeof project.techDetails>>(
+    (acc, t) => {
+      if (!acc[t.category]) acc[t.category] = [];
+      acc[t.category].push(t);
+      return acc;
+    },
+    {}
+  );
 
   const categoryOrder = ["frontend", "backend", "ai", "database", "api", "infra"];
   const sorted = categoryOrder.filter((c) => byCategory[c]);
 
   return (
-    <section className="py-24 border-b border-[rgba(255,255,255,0.06)]">
+    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-14"
+          transition={{ duration: 0.45 }}
+          className="mb-12"
         >
           <p className="cs-eyebrow mb-4">Technology Stack</p>
           <h2 className="cs-heading-h2">Built With</h2>
@@ -49,19 +52,16 @@ export function TechStackGrid({ project }: { project: Project }) {
           {sorted.map((cat, ci) => (
             <motion.div
               key={cat}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: ci * 0.07 }}
+              transition={{ duration: 0.4, delay: ci * 0.06 }}
             >
-              {/* Category Label */}
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: CAT_COLORS[cat] }}
-                />
+              {/* Category label */}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: CAT_COLORS[cat] }} />
                 <span
-                  className="text-xs font-mono font-semibold uppercase tracking-widest"
+                  className="font-mono text-[10px] font-bold uppercase tracking-widest"
                   style={{ color: CAT_COLORS[cat] }}
                 >
                   {CAT_LABELS[cat]}
@@ -73,20 +73,20 @@ export function TechStackGrid({ project }: { project: Project }) {
                 {byCategory[cat].map((tech, ti) => (
                   <motion.div
                     key={tech.name}
-                    initial={{ opacity: 0, scale: 0.96 }}
+                    initial={{ opacity: 0, scale: 0.97 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: ti * 0.05 }}
-                    whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                    className="cs-surface-2 p-5 group cursor-default"
+                    transition={{ duration: 0.3, delay: ti * 0.04 }}
+                    whileHover={{ y: -2, transition: { duration: 0.15 } }}
+                    className="cs-surface p-5 cursor-default"
                   >
                     <div
-                      className="text-xs font-mono font-bold mb-2 transition-colors"
+                      className="font-mono text-xs font-bold mb-2"
                       style={{ color: CAT_COLORS[cat] }}
                     >
                       {tech.name}
                     </div>
-                    <p className="text-[#8B949E] text-xs leading-relaxed">{tech.role}</p>
+                    <p className="text-[#5A738E] text-xs leading-relaxed">{tech.role}</p>
                   </motion.div>
                 ))}
               </div>

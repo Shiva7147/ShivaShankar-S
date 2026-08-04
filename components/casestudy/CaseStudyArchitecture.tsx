@@ -20,43 +20,39 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
   const Diagram = archMap[project.slug];
 
   return (
-    <section className="py-24 border-b border-[rgba(255,255,255,0.06)]">
+    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          transition={{ duration: 0.45 }}
+          className="mb-12"
         >
           <p className="cs-eyebrow mb-4">Architecture</p>
           <h2 className="cs-heading-h2">System Design</h2>
         </motion.div>
 
+        {/* SVG Diagram */}
         {Diagram ? (
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="cs-surface p-6 md:p-10"
+            transition={{ duration: 0.55 }}
+            className="cs-surface p-6 md:p-10 mb-8"
           >
             {Diagram}
           </motion.div>
         ) : (
-          <div className="cs-surface p-12 text-center text-[#484F58] font-mono text-sm">
+          <div className="cs-surface p-12 text-center text-[#5A738E] font-mono text-sm mb-8">
             Architecture diagram coming soon
           </div>
         )}
 
         {/* Engineering Decisions */}
         {project.engineeringDecisions.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8 space-y-4"
-          >
+          <div className="space-y-3">
             <p className="cs-eyebrow mb-5">Key Engineering Decisions</p>
             {project.engineeringDecisions.map((d, i) => (
               <motion.div
@@ -64,19 +60,14 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="flex items-start gap-4 cs-surface-2 p-5"
+                transition={{ duration: 0.38, delay: i * 0.08 }}
+                className="flex items-start gap-4 cs-surface p-5"
               >
-                <span
-                  className="text-xs font-mono font-bold mt-0.5 flex-shrink-0"
-                  style={{ color: project.accent }}
-                >
-                  ✦
-                </span>
-                <p className="text-[#C9D1D9] text-sm leading-relaxed">{d}</p>
+                <span className="text-[#B98945] font-bold text-base mt-0.5 flex-shrink-0">✦</span>
+                <p className="text-small text-[#12375F] leading-relaxed">{d}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

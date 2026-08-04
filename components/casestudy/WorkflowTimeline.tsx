@@ -5,59 +5,49 @@ import { Project } from "@/data/projects";
 
 export function WorkflowTimeline({ project }: { project: Project }) {
   return (
-    <section className="py-24 border-b border-[rgba(255,255,255,0.06)]">
+    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          transition={{ duration: 0.45 }}
+          className="mb-12"
         >
           <p className="cs-eyebrow mb-4">Workflow</p>
           <h2 className="cs-heading-h2">How It Works</h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical connector line */}
-          <div
-            className="absolute left-[22px] top-6 bottom-6 w-px hidden md:block"
-            style={{
-              background: `linear-gradient(to bottom, transparent, ${project.accent}40, ${project.accent}40, transparent)`,
-            }}
-          />
+        <div className="relative max-w-3xl">
+          {/* Vertical line */}
+          <div className="absolute left-[20px] top-2 bottom-2 w-px bg-[rgba(10,39,71,0.10)] hidden md:block" />
 
-          <div className="space-y-3 md:space-y-0">
+          <div className="space-y-4">
             {project.workflow.map((step, i) => (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="flex gap-6 md:gap-8 items-start group"
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="flex gap-6 items-start"
               >
-                {/* Step Dot */}
-                <div className="relative flex-shrink-0 mt-1">
-                  <motion.div
-                    initial={{ scale: 0.6 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: i * 0.08 + 0.1 }}
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-xs font-mono font-bold z-10 relative"
-                    style={{
-                      backgroundColor: `${project.accent}15`,
-                      border: `1.5px solid ${project.accent}40`,
-                      color: project.accent,
-                    }}
-                  >
-                    {String(step.step).padStart(2, "0")}
-                  </motion.div>
+                {/* Step number */}
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 relative z-10"
+                  style={{
+                    backgroundColor: "var(--brass-dim)",
+                    border: "1px solid rgba(185,137,69,0.25)",
+                    color: "var(--brass)",
+                  }}
+                >
+                  {String(step.step).padStart(2, "0")}
                 </div>
 
                 {/* Content */}
-                <div className="cs-surface p-5 md:p-6 flex-1 mb-4 md:mb-5">
-                  <h3 className="text-[#F0F6FC] font-semibold text-sm mb-1.5">{step.title}</h3>
-                  <p className="text-[#8B949E] text-sm leading-relaxed">{step.description}</p>
+                <div className="cs-surface p-5 flex-1 mb-3">
+                  <h3 className="font-sans font-semibold text-[#0A2747] text-sm mb-1">{step.title}</h3>
+                  <p className="text-small text-[#5A738E]">{step.description}</p>
                 </div>
               </motion.div>
             ))}

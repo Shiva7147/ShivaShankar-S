@@ -1,88 +1,86 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ShieldAlert, CheckCircle2 } from "lucide-react";
 import { Project } from "@/data/projects";
-
-interface Props {
-  project: Project;
-}
 
 export function CaseStudyOverview({ project }: Props) {
   return (
-    <section className="py-24 border-b border-[rgba(255,255,255,0.06)]">
+    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
-        {/* Section Header */}
-        <div className="mb-16">
+        {/* Header */}
+        <div className="mb-12">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
             className="cs-eyebrow mb-4"
           >
             Overview
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.08, ease: "easeOut" }}
             className="cs-heading-h2 max-w-2xl"
           >
             The Problem &amp; The Solution
           </motion.h2>
         </div>
 
-        {/* Problem / Solution Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        {/* Problem / Solution cards */}
+        <div className="grid md:grid-cols-2 gap-5 mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="cs-surface p-8"
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="cs-surface p-7"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-sm">⚠️</span>
-              <h3 className="text-[#F0F6FC] font-semibold text-base font-mono tracking-wide uppercase text-xs">The Problem</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <ShieldAlert className="w-4 h-4 text-[#B98945]" />
+              <h3 className="font-mono text-xs font-bold text-[#5A738E] uppercase tracking-widest">The Problem</h3>
             </div>
-            <p className="cs-body">{project.problem}</p>
+            <p className="text-body text-[#12375F] leading-relaxed text-sm">{project.problem}</p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="cs-surface p-8"
-            style={{ borderColor: `${project.accent}25` }}
+            transition={{ duration: 0.45, delay: 0.12 }}
+            className="cs-surface p-7 border-l-2 border-[#B98945]"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ backgroundColor: `${project.accent}15`, border: `1px solid ${project.accent}30` }}>✦</span>
-              <h3 className="text-[#F0F6FC] font-semibold font-mono tracking-wide uppercase text-xs">The Solution</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <CheckCircle2 className="w-4 h-4 text-[#12375F]" />
+              <h3 className="font-mono text-xs font-bold text-[#5A738E] uppercase tracking-widest">The Solution</h3>
             </div>
-            <p className="cs-body">{project.solution}</p>
+            <p className="text-body text-[#12375F] leading-relaxed text-sm">{project.solution}</p>
           </motion.div>
         </div>
 
-        {/* Overview Paragraphs */}
+        {/* Overview prose — 3 columns */}
         <div className="grid md:grid-cols-3 gap-8">
           {project.overview.map((para, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <div className="text-xs font-mono text-[#484F58] mb-3">
-                0{i + 1}
-              </div>
-              <p className="cs-body-bright text-sm leading-relaxed">{para}</p>
+              <div className="font-mono text-xs text-[#B98945] font-bold mb-3">0{i + 1}</div>
+              <p className="text-small text-[#12375F] leading-relaxed">{para}</p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
+}
+
+interface Props {
+  project: Project;
 }

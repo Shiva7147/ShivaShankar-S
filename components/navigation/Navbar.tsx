@@ -13,7 +13,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -31,7 +31,7 @@ export function Navbar() {
     }
   }, [mobileMenuOpen]);
 
-  const navLinks = [
+  const desktopNavLinks = [
     { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
@@ -39,11 +39,18 @@ export function Navbar() {
     { name: "Contact", href: "/about#contact" }
   ];
 
+  // STRICT USER REQUIREMENT FOR MOBILE NAV: ONLY Home, About, Projects.
+  const mobileNavLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" }
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-[64px] transition-all duration-300 ${
         scrolled
-          ? "bg-[#F6F3EC]/92 backdrop-blur-md border-b border-[rgba(10,39,71,0.12)] shadow-xs"
+          ? "bg-[#F6F3EC]/95 backdrop-blur-md border-b border-[rgba(10,39,71,0.12)] shadow-xs"
           : "bg-[#F6F3EC]/80 backdrop-blur-sm"
       }`}
     >
@@ -60,7 +67,7 @@ export function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
+          {desktopNavLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -78,7 +85,7 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA Button — Resume Download */}
+        {/* Right CTA Button — Resume Download (Desktop Only) */}
         <div className="hidden md:flex items-center gap-3">
           <a
             href={profileData.resumePath}
@@ -95,43 +102,49 @@ export function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#0A2747] hover:text-[#B98945] focus:outline-none"
+          className="md:hidden p-2 text-[#0A2747] hover:text-[#B98945] focus:outline-none rounded-md transition-colors"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-6 h-6 text-[#0A2747]" /> : <Menu className="w-6 h-6 text-[#0A2747]" />}
         </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Dedicated Mobile Navigation Drawer (ONLY: Home, About, Projects) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[64px] bg-[#F6F3EC] z-40 flex flex-col p-6 overflow-y-auto border-t border-[rgba(10,39,71,0.12)]">
-          <nav className="flex flex-col gap-6 my-auto text-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-sans text-2xl font-bold text-[#0A2747] hover:text-[#B98945] transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+        <div className="fixed inset-0 top-[64px] bg-[#0A2747] z-40 flex flex-col justify-between p-8 text-white animate-in fade-in duration-200">
+          <div className="space-y-2">
+            <p className="font-mono text-[10px] text-[#B98945] uppercase tracking-widest font-semibold mb-6">
+              Navigation
+            </p>
 
-          <div className="pt-6 border-t border-[rgba(10,39,71,0.12)] flex flex-col gap-3">
-            <a
-              href={profileData.resumePath}
-              download="ShivaShankar_S_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary w-full py-3 text-center justify-center"
-            >
-              <FileText className="w-4 h-4" />
-              <span>Download Resume</span>
-            </a>
-            <p className="text-center text-xs font-mono text-[#5A738E] mt-2">
-              Bengaluru, India → Relocating to Spain
+            <nav className="flex flex-col gap-6">
+              {mobileNavLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`font-sans text-3xl font-bold transition-all flex items-center justify-between py-2 border-b border-[rgba(255,255,255,0.08)] ${
+                      isActive ? "text-[#B98945] pl-2" : "text-[#FFFEFA] hover:text-[#B98945]"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && <span className="w-2 h-2 rounded-full bg-[#B98945]" />}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          <div className="pt-6 border-t border-[rgba(255,255,255,0.1)] space-y-3">
+            <div className="flex items-center justify-between text-xs font-mono text-[#8B949E]">
+              <span>SHIVA SHANKAR S</span>
+              <span>AI ENGINEER</span>
+            </div>
+            <p className="text-xs font-mono text-[#B98945]">
+              Bengaluru, India → Spain
             </p>
           </div>
         </div>

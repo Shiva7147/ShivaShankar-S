@@ -64,8 +64,10 @@ export function HeroDomePortrait() {
           alt="Shiva Shankar S — AI Engineer"
           fill
           priority
+          quality={100}
+          unoptimized={true}
           sizes="(max-width: 768px) 100vw, 340px"
-          className="object-cover object-center filter grayscale contrast-[1.05] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+          className="object-cover object-top filter grayscale contrast-[1.04] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
         />
 
         {/* Subtle Gradient Overlay */}

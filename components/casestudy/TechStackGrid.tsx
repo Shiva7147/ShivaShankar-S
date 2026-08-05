@@ -35,7 +35,7 @@ export function TechStackGrid({ project }: { project: Project }) {
   const sorted = categoryOrder.filter((c) => byCategory[c]);
 
   return (
-    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
+    <section className="py-20 bg-[#F6F3EC] border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -45,7 +45,7 @@ export function TechStackGrid({ project }: { project: Project }) {
           className="mb-12"
         >
           <p className="cs-eyebrow mb-4">Technology Stack</p>
-          <h2 className="cs-heading-h2">Built With</h2>
+          <h2 className="cs-heading-h2">Production Technologies</h2>
         </motion.div>
 
         <div className="space-y-10">
@@ -58,10 +58,10 @@ export function TechStackGrid({ project }: { project: Project }) {
               transition={{ duration: 0.4, delay: ci * 0.06 }}
             >
               {/* Category label */}
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: CAT_COLORS[cat] }} />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: CAT_COLORS[cat] }} />
                 <span
-                  className="font-mono text-[10px] font-bold uppercase tracking-widest"
+                  className="font-mono text-xs font-bold uppercase tracking-widest"
                   style={{ color: CAT_COLORS[cat] }}
                 >
                   {CAT_LABELS[cat]}
@@ -77,8 +77,8 @@ export function TechStackGrid({ project }: { project: Project }) {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: ti * 0.04 }}
-                    whileHover={{ y: -2, transition: { duration: 0.15 } }}
-                    className="cs-surface p-5 cursor-default"
+                    whileHover={{ y: -3, transition: { duration: 0.18 } }}
+                    className="p-5 rounded-xl bg-[#FFFEFA] border border-[rgba(10,39,71,0.12)] shadow-xs hover:shadow-md hover:border-[#B98945]/40 transition-all cursor-default"
                   >
                     <div
                       className="font-mono text-xs font-bold mb-2"

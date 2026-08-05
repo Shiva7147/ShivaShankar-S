@@ -5,7 +5,7 @@ import { Project } from "@/data/projects";
 
 export function RoadmapSection({ project }: { project: Project }) {
   return (
-    <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
+    <section className="py-20 bg-[#FFFEFA] border-b border-[rgba(10,39,71,0.12)]">
       <div className="cs-wrap">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -27,10 +27,10 @@ export function RoadmapSection({ project }: { project: Project }) {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
               whileHover={{ y: -2, transition: { duration: 0.15 } }}
-              className="flex items-center gap-2 px-4 py-2 rounded text-sm font-medium cs-surface cursor-default"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] shadow-xs hover:border-[#B98945] hover:shadow-sm transition-all cursor-default"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B98945] flex-shrink-0" />
-              <span className="text-[#12375F] font-sans text-sm">{item}</span>
+              <span className="w-2 h-2 rounded-full bg-[#B98945] flex-shrink-0" />
+              <span className="text-[#0A2747] font-sans font-medium text-sm">{item}</span>
             </motion.div>
           ))}
         </div>

@@ -3,7 +3,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, FileText, Command, Search } from "lucide-react";
+import {
+  Menu,
+  X,
+  FileText,
+  Command,
+  Search,
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUpRight
+} from "lucide-react";
 import { profileData } from "@/data/profile";
 import { CommandPalette } from "@/components/navigation/CommandPalette";
 
@@ -41,11 +51,18 @@ export function Navbar() {
     { name: "Contact", href: "/about#contact" }
   ];
 
-  // STRICT USER REQUIREMENT FOR MOBILE NAV: ONLY Home, About, Projects.
+  // EXACT USER SPECIFIED MOBILE NAV LINKS: About Us, Projects, Contact
   const mobileNavLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" }
+    { name: "About Us", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/about#contact" }
+  ];
+
+  const socialLinks = [
+    { name: "GitHub", href: profileData.github, icon: Github },
+    { name: "LinkedIn", href: profileData.linkedin, icon: Linkedin },
+    { name: "Email", href: `mailto:${profileData.email}`, icon: Mail },
+    { name: "Resume", href: profileData.resumePath, icon: FileText, download: true }
   ];
 
   return (
@@ -115,7 +132,7 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Buttons (Cmd+K + Hamburger) */}
+          {/* Mobile Buttons (Search + Menu Drawer Toggle) */}
           <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={() => setCmdPaletteOpen(true)}
@@ -163,9 +180,9 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Navigation Links */}
-          <div className="my-auto py-8 space-y-6">
-            <div className="flex items-center justify-between mb-4">
+          {/* Navigation Links: About Us, Projects, Contact */}
+          <div className="my-auto py-6 space-y-6">
+            <div className="flex items-center justify-between mb-2">
               <p className="font-mono text-[11px] text-[#B98945] uppercase tracking-widest font-bold">
                 NAVIGATION
               </p>
@@ -181,7 +198,7 @@ export function Navbar() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-5">
+            <nav className="flex flex-col gap-4">
               {mobileNavLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -189,27 +206,51 @@ export function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`font-sans text-3xl md:text-4xl font-bold transition-all flex items-center justify-between py-3 border-b border-[rgba(255,255,255,0.08)] ${
+                    className={`font-sans text-3xl font-bold transition-all flex items-center justify-between py-3 border-b border-[rgba(255,255,255,0.08)] ${
                       isActive ? "text-[#B98945] pl-2" : "text-[#FFFEFA] hover:text-[#B98945]"
                     }`}
                   >
                     <span>{link.name}</span>
-                    {isActive && <span className="w-2.5 h-2.5 rounded-full bg-[#B98945]" />}
+                    {isActive ? (
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#B98945]" />
+                    ) : (
+                      <ArrowUpRight className="w-5 h-5 text-[#8B949E]" />
+                    )}
                   </Link>
                 );
               })}
             </nav>
           </div>
 
-          {/* Mobile Footer Information */}
-          <div className="pt-6 border-t border-[rgba(255,255,255,0.1)] space-y-2">
-            <div className="flex items-center justify-between text-xs font-mono text-[#CBD5E1]">
-              <span className="font-bold text-[#FFFEFA]">SHIVA SHANKAR S</span>
-              <span className="text-[#B98945]">AI ENGINEER</span>
-            </div>
-            <p className="text-xs font-mono text-[#8B949E]">
-              Bengaluru, India → Spain
+          {/* CTA SOCIALS & CONNECT BUTTONS */}
+          <div className="pt-6 border-t border-[rgba(255,255,255,0.1)] space-y-4">
+            <p className="font-mono text-[10px] text-[#B98945] uppercase tracking-widest font-bold">
+              CONNECT &amp; SOCIALS
             </p>
+
+            <div className="grid grid-cols-2 gap-3">
+              {socialLinks.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    target={s.download ? "_self" : "_blank"}
+                    rel="noopener noreferrer"
+                    download={s.download ? "ShivaShankar_S_Resume.pdf" : undefined}
+                    className="flex items-center gap-2.5 p-3 rounded-xl bg-[#12375F] border border-[rgba(255,255,255,0.12)] text-xs font-mono text-[#FFFEFA] hover:border-[#B98945] hover:text-[#B98945] transition-all"
+                  >
+                    <Icon className="w-4 h-4 text-[#B98945] shrink-0" />
+                    <span className="font-bold truncate">{s.name}</span>
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center justify-between text-[11px] font-mono text-[#8B949E] pt-2">
+              <span>SHIVA SHANKAR S</span>
+              <span>Bengaluru, India → Spain</span>
+            </div>
           </div>
         </div>
       )}

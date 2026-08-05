@@ -51,7 +51,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[64px] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 h-[64px] transition-all duration-300 ${
           scrolled
             ? "bg-[#F6F3EC]/95 backdrop-blur-md border-b border-[rgba(10,39,71,0.12)] shadow-xs"
             : "bg-[#F6F3EC]/80 backdrop-blur-sm"
@@ -125,68 +125,94 @@ export function Navbar() {
               <Search className="w-5 h-5 text-[#B98945]" />
             </button>
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => setMobileMenuOpen(true)}
               className="p-2 text-[#0A2747] hover:text-[#B98945] focus:outline-none rounded-md transition-colors"
-              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#0A2747]" /> : <Menu className="w-6 h-6 text-[#0A2747]" />}
+              <Menu className="w-6 h-6 text-[#0A2747]" />
             </button>
           </div>
         </div>
-
-        {/* Dedicated Mobile Navigation Drawer (ONLY: Home, About, Projects) */}
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 top-[64px] bg-[#0A2747] z-40 flex flex-col justify-between p-8 text-white animate-in fade-in duration-200">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between mb-6">
-                <p className="font-mono text-[10px] text-[#B98945] uppercase tracking-widest font-semibold">
-                  Navigation
-                </p>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setCmdPaletteOpen(true);
-                  }}
-                  className="px-3 py-1 rounded bg-[#12375F] border border-[rgba(255,255,255,0.12)] text-xs font-mono text-[#B98945] flex items-center gap-1.5"
-                >
-                  <Command className="w-3 h-3" />
-                  <span>Cmd + K</span>
-                </button>
-              </div>
-
-              <nav className="flex flex-col gap-6">
-                {mobileNavLinks.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`font-sans text-3xl font-bold transition-all flex items-center justify-between py-2 border-b border-[rgba(255,255,255,0.08)] ${
-                        isActive ? "text-[#B98945] pl-2" : "text-[#FFFEFA] hover:text-[#B98945]"
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      {isActive && <span className="w-2 h-2 rounded-full bg-[#B98945]" />}
-                    </Link>
-                  );
-                })}
-              </nav>
-            </div>
-
-            <div className="pt-6 border-t border-[rgba(255,255,255,0.1)] space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono text-[#8B949E]">
-                <span>SHIVA SHANKAR S</span>
-                <span>AI ENGINEER</span>
-              </div>
-              <p className="text-xs font-mono text-[#B98945]">
-                Bengaluru, India → Spain
-              </p>
-            </div>
-          </div>
-        )}
       </header>
+
+      {/* FULL-SCREEN SOLID DARK NAVY MOBILE NAVIGATION OVERLAY */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-[#0A2747] text-[#FFFEFA] flex flex-col justify-between p-6 md:p-8 animate-in fade-in duration-200 overflow-y-auto">
+          {/* Top Bar inside Overlay */}
+          <div className="flex items-center justify-between h-[50px] border-b border-[rgba(255,255,255,0.1)] pb-4">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 text-decoration-none"
+            >
+              <span className="font-sans font-bold text-lg text-[#FFFEFA] tracking-tight">
+                SHIVA
+              </span>
+              <span className="text-[#B98945] text-xs font-mono font-medium tracking-wider uppercase">
+                / AI ENGINEER
+              </span>
+            </Link>
+
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 text-[#FFFEFA] hover:text-[#B98945] focus:outline-none rounded-md transition-colors"
+              aria-label="Close navigation menu"
+            >
+              <X className="w-7 h-7 text-[#FFFEFA]" />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="my-auto py-8 space-y-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="font-mono text-[11px] text-[#B98945] uppercase tracking-widest font-bold">
+                NAVIGATION
+              </p>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCmdPaletteOpen(true);
+                }}
+                className="px-3 py-1.5 rounded-lg bg-[#12375F] border border-[#B98945]/30 text-xs font-mono text-[#B98945] flex items-center gap-1.5"
+              >
+                <Command className="w-3.5 h-3.5" />
+                <span>Search / Cmd + K</span>
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-5">
+              {mobileNavLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`font-sans text-3xl md:text-4xl font-bold transition-all flex items-center justify-between py-3 border-b border-[rgba(255,255,255,0.08)] ${
+                      isActive ? "text-[#B98945] pl-2" : "text-[#FFFEFA] hover:text-[#B98945]"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && <span className="w-2.5 h-2.5 rounded-full bg-[#B98945]" />}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Mobile Footer Information */}
+          <div className="pt-6 border-t border-[rgba(255,255,255,0.1)] space-y-2">
+            <div className="flex items-center justify-between text-xs font-mono text-[#CBD5E1]">
+              <span className="font-bold text-[#FFFEFA]">SHIVA SHANKAR S</span>
+              <span className="text-[#B98945]">AI ENGINEER</span>
+            </div>
+            <p className="text-xs font-mono text-[#8B949E]">
+              Bengaluru, India → Spain
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Command Palette Modal Overlay */}
       <CommandPalette isOpen={cmdPaletteOpen} onClose={() => setCmdPaletteOpen(false)} />

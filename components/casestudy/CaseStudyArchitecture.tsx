@@ -8,6 +8,7 @@ import { AthleteIqArchSvg } from "@/components/svg/casestudy/AthleteIqArchSvg";
 import { LeadEngineArchSvg } from "@/components/svg/casestudy/LeadEngineArchSvg";
 import { ReframeArchSvg } from "@/components/svg/casestudy/ReframeArchSvg";
 import { SmoothOperatorArchSvg } from "@/components/svg/casestudy/SmoothOperatorArchSvg";
+import { ResponsiveChartContainer } from "@/components/ui/ResponsiveChartContainer";
 import {
   Cpu,
   Clock,
@@ -259,17 +260,19 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
           <h2 className="cs-heading-h2">System Design Visualizer</h2>
         </motion.div>
 
-        {/* Visual Diagram */}
+        {/* Visual Diagram in Responsive Container */}
         {Diagram ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="mb-10"
-          >
-            {Diagram}
-          </motion.div>
+          <ResponsiveChartContainer name={`${project.title} Architecture Diagram`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+              className="mb-10"
+            >
+              {Diagram}
+            </motion.div>
+          </ResponsiveChartContainer>
         ) : (
           <div className="cs-surface p-10 text-center text-[#5A738E] font-mono text-sm mb-10">
             Architecture diagram coming soon
@@ -278,119 +281,121 @@ export function CaseStudyArchitecture({ project }: { project: Project }) {
 
         {/* INTERACTIVE ARCHITECTURE STEPPER INSPECTOR */}
         {steps.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="p-6 md:p-8 rounded-xl bg-[#0A2747] text-[#FFFEFA] border border-[rgba(255,255,255,0.16)] shadow-md mb-12"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-[rgba(255,255,255,0.1)]">
-              <div>
-                <span className="font-mono text-[11px] text-[#B98945] font-bold tracking-widest uppercase block mb-1 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  INTERACTIVE STEP INSPECTOR
-                </span>
-                <h3 className="font-sans font-bold text-lg md:text-xl text-[#FFFEFA]">
-                  Step-by-Step System Execution Payload
-                </h3>
-              </div>
-              <div className="font-mono text-xs text-[#B98945] bg-[#12375F] px-3 py-1 rounded border border-[#B98945]/30">
-                Step {activeStep + 1} of {steps.length}
-              </div>
-            </div>
-
-            {/* Stepper Buttons Bar */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {steps.map((s, idx) => {
-                const isActive = idx === activeStep;
-                return (
-                  <button
-                    key={s.step}
-                    onClick={() => setActiveStep(idx)}
-                    className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-mono transition-all ${
-                      isActive
-                        ? "bg-[#B98945] text-white font-bold shadow-sm"
-                        : "bg-[#12375F] text-[#CBD5E1] hover:bg-[#12375F]/80 hover:text-white border border-[rgba(255,255,255,0.1)]"
-                    }`}
-                  >
-                    <span>0{s.step}</span>
-                    <span className="truncate max-w-[120px] sm:max-w-[180px]">{s.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Step Details Panel */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeStep}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 rounded-lg bg-[#12375F] border border-[rgba(255,255,255,0.12)]"
-              >
-                {/* Left side details */}
-                <div className="space-y-4">
-                  <div>
-                    <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
-                      COMPONENT / NODE
-                    </span>
-                    <h4 className="font-sans font-bold text-base text-[#FFFEFA] flex items-center gap-2">
-                      <Cpu className="w-4 h-4 text-[#B98945]" />
-                      {currentDetail.component}
-                    </h4>
-                  </div>
-
-                  <div>
-                    <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
-                      DATA / PAYLOAD FORMAT
-                    </span>
-                    <p className="text-xs font-mono text-[#CBD5E1] bg-[#0A2747] p-2.5 rounded border border-[rgba(255,255,255,0.08)] flex items-start gap-2">
-                      <Terminal className="w-4 h-4 text-[#B98945] shrink-0 mt-0.5" />
-                      <span>{currentDetail.payload}</span>
-                    </p>
-                  </div>
+          <ResponsiveChartContainer name={`${project.title} Step Inspector`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="p-6 md:p-8 rounded-xl bg-[#0A2747] text-[#FFFEFA] border border-[rgba(255,255,255,0.16)] shadow-md mb-12"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-[rgba(255,255,255,0.1)]">
+                <div>
+                  <span className="font-mono text-[11px] text-[#B98945] font-bold tracking-widest uppercase block mb-1 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    INTERACTIVE STEP INSPECTOR
+                  </span>
+                  <h3 className="font-sans font-bold text-lg md:text-xl text-[#FFFEFA]">
+                    Step-by-Step System Execution Payload
+                  </h3>
                 </div>
+                <div className="font-mono text-xs text-[#B98945] bg-[#12375F] px-3 py-1 rounded border border-[#B98945]/30">
+                  Step {activeStep + 1} of {steps.length}
+                </div>
+              </div>
 
-                {/* Right side benchmarks & guardrails */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-6">
+              {/* Stepper Buttons Bar */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {steps.map((s, idx) => {
+                  const isActive = idx === activeStep;
+                  return (
+                    <button
+                      key={s.step}
+                      onClick={() => setActiveStep(idx)}
+                      className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-mono transition-all ${
+                        isActive
+                          ? "bg-[#B98945] text-white font-bold shadow-sm"
+                          : "bg-[#12375F] text-[#CBD5E1] hover:bg-[#12375F]/80 hover:text-white border border-[rgba(255,255,255,0.1)]"
+                      }`}
+                    >
+                      <span>0{s.step}</span>
+                      <span className="truncate max-w-[120px] sm:max-w-[180px]">{s.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Step Details Panel */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 rounded-lg bg-[#12375F] border border-[rgba(255,255,255,0.12)]"
+                >
+                  {/* Left side details */}
+                  <div className="space-y-4">
                     <div>
                       <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
-                        LATENCY TARGET
+                        COMPONENT / NODE
                       </span>
-                      <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#FFFEFA]">
-                        <Clock className="w-3.5 h-3.5 text-[#B98945]" />
-                        <span>{currentDetail.latency}</span>
+                      <h4 className="font-sans font-bold text-base text-[#FFFEFA] flex items-center gap-2">
+                        <Cpu className="w-4 h-4 text-[#B98945]" />
+                        {currentDetail.component}
+                      </h4>
+                    </div>
+
+                    <div>
+                      <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
+                        DATA / PAYLOAD FORMAT
+                      </span>
+                      <p className="text-xs font-mono text-[#CBD5E1] bg-[#0A2747] p-2.5 rounded border border-[rgba(255,255,255,0.08)] flex items-start gap-2">
+                        <Terminal className="w-4 h-4 text-[#B98945] shrink-0 mt-0.5" />
+                        <span>{currentDetail.payload}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right side benchmarks & guardrails */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-6">
+                      <div>
+                        <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
+                          LATENCY TARGET
+                        </span>
+                        <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#FFFEFA]">
+                          <Clock className="w-3.5 h-3.5 text-[#B98945]" />
+                          <span>{currentDetail.latency}</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
+                          TECHNOLOGY USED
+                        </span>
+                        <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#FFFEFA]">
+                          <Code2 className="w-3.5 h-3.5 text-[#B98945]" />
+                          <span>{currentDetail.tech}</span>
+                        </div>
                       </div>
                     </div>
 
                     <div>
                       <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
-                        TECHNOLOGY USED
+                        SAFETY GUARDRAIL / FAILOVER
                       </span>
-                      <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#FFFEFA]">
-                        <Code2 className="w-3.5 h-3.5 text-[#B98945]" />
-                        <span>{currentDetail.tech}</span>
+                      <div className="p-2.5 rounded bg-[#0A2747] border-l-3 border-l-[#B98945] text-xs font-sans text-[#F8FAFC] flex items-start gap-2">
+                        <ShieldCheck className="w-4 h-4 text-[#B98945] shrink-0 mt-0.5" />
+                        <span>{currentDetail.guardrail}</span>
                       </div>
                     </div>
                   </div>
-
-                  <div>
-                    <span className="font-mono text-[10px] text-[#B98945] uppercase tracking-wider font-bold block mb-1">
-                      SAFETY GUARDRAIL / FAILOVER
-                    </span>
-                    <div className="p-2.5 rounded bg-[#0A2747] border-l-3 border-l-[#B98945] text-xs font-sans text-[#F8FAFC] flex items-start gap-2">
-                      <ShieldCheck className="w-4 h-4 text-[#B98945] shrink-0 mt-0.5" />
-                      <span>{currentDetail.guardrail}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          </ResponsiveChartContainer>
         )}
 
         {/* Engineering Decisions */}

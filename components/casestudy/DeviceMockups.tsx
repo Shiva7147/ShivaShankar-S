@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
+import { ResponsiveChartContainer } from "@/components/ui/ResponsiveChartContainer";
 
 // SVG-rendered dashboard mockup — cream/navy palette to match site
 function DashboardMockup() {
   return (
-    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 8 }}>
+    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 8 }} role="img" aria-label="Dashboard UI Mockup">
       <rect width="480" height="280" fill="#FFFEFA" />
       {/* Sidebar */}
       <rect x="0" y="0" width="56" height="280" fill="#F6F3EC" />
@@ -68,7 +69,7 @@ function ConversationMockup() {
     { right: true, w: 170 },
   ];
   return (
-    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 8 }}>
+    <svg viewBox="0 0 480 280" style={{ width: "100%", height: "auto", borderRadius: 8 }} role="img" aria-label="Conversation UI Mockup">
       <rect width="480" height="280" fill="#FFFEFA" />
       {/* Header */}
       <rect x="0" y="0" width="480" height="44" fill="#F6F3EC" />
@@ -114,27 +115,31 @@ export function DeviceMockups({ project }: { project: Project }) {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="p-5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.14)] shadow-sm hover:shadow-md transition-shadow"
-          >
-            <p className="font-mono text-xs font-bold text-[#0A2747] uppercase tracking-widest mb-3">Analytics Dashboard</p>
-            <DashboardMockup />
-          </motion.div>
+          <ResponsiveChartContainer name={`${project.title} Dashboard Mockup`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="p-5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.14)] shadow-sm hover:shadow-md transition-shadow"
+            >
+              <p className="font-mono text-xs font-bold text-[#0A2747] uppercase tracking-widest mb-3">Analytics Dashboard</p>
+              <DashboardMockup />
+            </motion.div>
+          </ResponsiveChartContainer>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.08 }}
-            className="p-5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.14)] shadow-sm hover:shadow-md transition-shadow"
-          >
-            <p className="font-mono text-xs font-bold text-[#0A2747] uppercase tracking-widest mb-3">Conversation View</p>
-            <ConversationMockup />
-          </motion.div>
+          <ResponsiveChartContainer name={`${project.title} Conversation Mockup`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.08 }}
+              className="p-5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.14)] shadow-sm hover:shadow-md transition-shadow"
+            >
+              <p className="font-mono text-xs font-bold text-[#0A2747] uppercase tracking-widest mb-3">Conversation View</p>
+              <ConversationMockup />
+            </motion.div>
+          </ResponsiveChartContainer>
         </div>
       </div>
     </section>

@@ -51,9 +51,9 @@ export function Navbar() {
     { name: "Contact", href: "/about#contact" }
   ];
 
-  // EXACT USER SPECIFIED MOBILE NAV LINKS: About Us, Projects, Contact
+  // SINGLE-PERSON PORTFOLIO: About, Projects, Contact
   const mobileNavLinks = [
-    { name: "About Us", href: "/about" },
+    { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
     { name: "Contact", href: "/about#contact" }
   ];
@@ -180,7 +180,7 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Navigation Links: About Us, Projects, Contact */}
+          {/* Navigation Links: About, Projects, Contact */}
           <div className="my-auto py-6 space-y-6">
             <div className="flex items-center justify-between mb-2">
               <p className="font-mono text-[11px] text-[#B98945] uppercase tracking-widest font-bold">

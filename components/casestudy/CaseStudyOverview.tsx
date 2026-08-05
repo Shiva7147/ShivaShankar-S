@@ -41,13 +41,13 @@ export function CaseStudyOverview({ project }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="p-7 rounded-xl bg-[#12375F]/80 border border-[rgba(255,255,255,0.12)] space-y-3"
+            className="p-7 rounded-xl bg-[#12375F] border border-[rgba(255,255,255,0.16)] shadow-md space-y-3"
           >
             <div className="flex items-center gap-3">
               <ShieldAlert className="w-5 h-5 text-[#B98945]" />
               <h3 className="font-mono text-xs font-bold text-[#B98945] uppercase tracking-widest">The Problem</h3>
             </div>
-            <p className="text-body text-[#E2E8F0] leading-relaxed text-sm">{project.problem}</p>
+            <p className="text-sm font-sans text-[#F8FAFC] leading-relaxed font-normal">{project.problem}</p>
           </motion.div>
 
           <motion.div
@@ -55,18 +55,18 @@ export function CaseStudyOverview({ project }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12 }}
-            className="p-7 rounded-xl bg-[#12375F]/80 border-l-4 border-l-[#B98945] border border-[rgba(255,255,255,0.12)] space-y-3"
+            className="p-7 rounded-xl bg-[#12375F] border-l-4 border-l-[#B98945] border border-[rgba(255,255,255,0.16)] shadow-md space-y-3"
           >
             <div className="flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-[#B98945]" />
               <h3 className="font-mono text-xs font-bold text-[#B98945] uppercase tracking-widest">The System Solution</h3>
             </div>
-            <p className="text-body text-[#E2E8F0] leading-relaxed text-sm">{project.solution}</p>
+            <p className="text-sm font-sans text-[#F8FAFC] leading-relaxed font-normal">{project.solution}</p>
           </motion.div>
         </div>
 
         {/* Overview prose — 3 columns */}
-        <div className="grid md:grid-cols-3 gap-8 pt-4 border-t border-[rgba(255,255,255,0.1)]">
+        <div className="grid md:grid-cols-3 gap-8 pt-6 border-t border-[rgba(255,255,255,0.1)]">
           {project.overview.map((para, i) => (
             <motion.div
               key={i}
@@ -76,7 +76,7 @@ export function CaseStudyOverview({ project }: Props) {
               transition={{ duration: 0.4, delay: i * 0.08 }}
             >
               <div className="font-mono text-xs text-[#B98945] font-bold mb-3">0{i + 1}</div>
-              <p className="text-small text-[#CBD5E1] leading-relaxed">{para}</p>
+              <p className="text-sm font-sans text-[#CBD5E1] leading-relaxed">{para}</p>
             </motion.div>
           ))}
         </div>

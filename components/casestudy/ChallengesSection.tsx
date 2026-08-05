@@ -30,7 +30,7 @@ export function ChallengesSection({ project }: { project: Project }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.38, delay: i * 0.07 }}
-              className="rounded-xl bg-[#12375F] border border-[rgba(255,255,255,0.12)] overflow-hidden shadow-sm"
+              className="rounded-xl bg-[#12375F] border border-[rgba(255,255,255,0.16)] overflow-hidden shadow-md"
             >
               {/* Header */}
               <button
@@ -61,14 +61,14 @@ export function ChallengesSection({ project }: { project: Project }) {
                     <div className="px-6 pb-6 space-y-4 border-t border-[rgba(255,255,255,0.1)] pt-5">
                       <div>
                         <p className="font-mono text-[10px] text-[#B98945] uppercase tracking-widest mb-1.5 font-bold">The Problem</p>
-                        <p className="text-small text-[#94A3B8] leading-relaxed">{ch.problem}</p>
+                        <p className="text-xs font-sans text-[#CBD5E1] leading-relaxed">{ch.problem}</p>
                       </div>
                       <div className="p-4 rounded-lg bg-[#0A2747] border-l-4 border-l-[#B98945]">
                         <p className="font-mono text-[10px] text-[#B98945] uppercase tracking-widest mb-1.5 font-bold flex items-center gap-1.5">
                           <Sparkles className="w-3 h-3 text-[#B98945]" />
                           Engineering Solution
                         </p>
-                        <p className="text-small text-[#E2E8F0] leading-relaxed font-medium">{ch.solution}</p>
+                        <p className="text-xs font-sans text-[#F8FAFC] leading-relaxed font-medium">{ch.solution}</p>
                       </div>
                     </div>
                   </motion.div>

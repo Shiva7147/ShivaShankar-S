@@ -8,7 +8,7 @@ export const profileData = {
   email: "s.shivashankar1304@gmail.com",
   github: "https://github.com/Shiva7147",
   linkedin: "https://www.linkedin.com/in/shiva-shankar-s1317",
-  resumePath: "/resume/shiva-shankar-s-resume.pdf",
+  resumePath: "/Shiva_Resume.pdf",
   headshotPlaceholder: "/images/profile-placeholder.webp",
   coreMessage: "I build production-ready AI systems that solve real problems.",
   pillars: [

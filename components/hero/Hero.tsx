@@ -56,7 +56,7 @@ export function Hero() {
 
               <a
                 href={profileData.resumePath}
-                download="ShivaShankar_S_Resume.pdf"
+                download="Shiva_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost"

@@ -47,7 +47,6 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
-    { name: "Notes", href: "/notes" },
     { name: "Contact", href: "/about#contact" }
   ];
 
@@ -122,7 +121,7 @@ export function Navbar() {
 
             <a
               href={profileData.resumePath}
-              download="ShivaShankar_S_Resume.pdf"
+              download="Shiva_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost text-xs py-1.5 px-3.5"
@@ -237,7 +236,7 @@ export function Navbar() {
                     href={s.href}
                     target={s.download ? "_self" : "_blank"}
                     rel="noopener noreferrer"
-                    download={s.download ? "ShivaShankar_S_Resume.pdf" : undefined}
+                    download={s.download ? "Shiva_Resume.pdf" : undefined}
                     className="flex items-center gap-2.5 p-3 rounded-xl bg-[#12375F] border border-[rgba(255,255,255,0.12)] text-xs font-mono text-[#FFFEFA] hover:border-[#B98945] hover:text-[#B98945] transition-all"
                   >
                     <Icon className="w-4 h-4 text-[#B98945] shrink-0" />

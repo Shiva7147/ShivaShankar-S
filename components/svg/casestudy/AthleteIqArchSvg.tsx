@@ -12,110 +12,115 @@ export function AthleteIqArchSvg() {
           <span className="font-mono text-[11px] text-[#059669] font-bold tracking-wider uppercase block">
             LANGGRAPH REACT AGENT ARCHITECTURE
           </span>
-          <h4 className="font-sans font-bold text-base text-[#0A2747] mt-0.5">
-            AthleteIQ Hub-and-Spoke System
+          <h4 className="font-sans font-bold text-base md:text-lg text-[#0A2747] mt-0.5">
+            AthleteIQ Hub-and-Spoke Architecture
           </h4>
         </div>
-        <span className="text-[10px] font-mono text-[#0A2747] bg-[#F6F3EC] px-2.5 py-1 rounded border border-[rgba(10,39,71,0.12)] self-start sm:self-auto font-semibold">
+        <span className="text-[10px] font-mono text-[#0A2747] bg-[#F6F3EC] px-2.5 py-1 rounded border border-[rgba(10,39,71,0.12)] self-start sm:self-auto font-semibold shrink-0">
           Deterministic + RAG
         </span>
       </div>
 
-      {/* Desktop / Tablet Scrollable Flow Container */}
+      {/* Desktop / Tablet Layout Container */}
       <div className="hidden lg:block w-full overflow-x-auto pb-2">
-        <div className="min-w-[650px] grid grid-cols-12 gap-3.5 items-center">
+        <div className="min-w-[760px] flex items-center justify-between gap-4">
           {/* Step 1: User Query */}
-          <div className="col-span-3 p-4 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-1">
-            <span className="font-mono text-[10px] text-[#5A738E] font-semibold block">1. USER QUERY</span>
-            <div className="font-sans font-bold text-sm text-[#0A2747]">Coach / Athlete</div>
-            <div className="text-[11px] font-mono text-[#5A738E]">Sports Science Input</div>
+          <div className="flex-1 p-4 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-1.5 min-w-[200px]">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] text-[#5A738E] font-bold">1. USER QUERY</span>
+              <span className="font-mono text-[9px] text-[#059669] bg-[#059669]/10 px-1.5 py-0.5 rounded font-bold">INPUT</span>
+            </div>
+            <div className="font-sans font-bold text-sm text-[#0A2747] leading-tight">Coach / Athlete Query</div>
+            <div className="text-xs font-mono text-[#5A738E] leading-tight">Sports Science Telemetry</div>
           </div>
 
-          <div className="col-span-1 flex justify-center text-[#059669]">
-            <ArrowRight className="w-4 h-4" />
+          {/* Arrow 1 */}
+          <div className="flex items-center justify-center text-[#059669] shrink-0">
+            <ArrowRight className="w-5 h-5 stroke-[2.5]" />
           </div>
 
           {/* Step 2: LangGraph Core */}
-          <div className="col-span-4 p-4 rounded-lg bg-[#FFFEFA] border-2 border-[#059669] shadow-xs space-y-1.5">
+          <div className="flex-[1.2] p-4 rounded-xl bg-[#FFFEFA] border-2 border-[#059669] shadow-sm space-y-2 min-w-[230px]">
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] text-[#059669] font-bold">LANGGRAPH CORE</span>
               <Cpu className="w-4 h-4 text-[#059669] shrink-0" />
             </div>
-            <div className="font-sans font-bold text-sm text-[#0A2747]">ReAct Agent Core</div>
-            <div className="text-[11px] text-[#5A738E]">Intent routing &amp; safety evaluation</div>
+            <div className="font-sans font-bold text-sm text-[#0A2747] leading-tight">ReAct Agent &amp; Safety Router</div>
+            <div className="text-xs text-[#5A738E] leading-relaxed">Intent classification, memory state &amp; tool dispatch</div>
           </div>
 
-          <div className="col-span-1 flex justify-center text-[#059669]">
-            <ArrowRight className="w-4 h-4" />
+          {/* Arrow 2 */}
+          <div className="flex items-center justify-center text-[#059669] shrink-0">
+            <ArrowRight className="w-5 h-5 stroke-[2.5]" />
           </div>
 
-          {/* Step 3: Tools */}
-          <div className="col-span-3 space-y-2">
-            <div className="p-2.5 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2 min-w-0">
-              <Database className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+          {/* Step 3: Routed Tools */}
+          <div className="flex-[1.3] space-y-2 min-w-[240px]">
+            <div className="p-3 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-3">
+              <Database className="w-4 h-4 text-[#059669] shrink-0" />
               <div className="min-w-0">
-                <div className="font-sans font-bold text-xs text-[#0A2747] truncate">ChromaDB RAG</div>
-                <div className="text-[10px] font-mono text-[#5A738E] truncate">56 Knowledge Entries</div>
+                <div className="font-sans font-bold text-xs text-[#0A2747] leading-tight truncate">ChromaDB RAG Vector Store</div>
+                <div className="text-[11px] font-mono text-[#5A738E] leading-tight truncate">56 Knowledge Base Chunks</div>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-[#B98945]/10 border border-[#B98945]/30 flex items-center gap-2 min-w-0">
-              <Calculator className="w-3.5 h-3.5 text-[#B98945] shrink-0" />
+            <div className="p-3 rounded-lg bg-[#B98945]/10 border border-[#B98945]/30 flex items-center gap-3">
+              <Calculator className="w-4 h-4 text-[#B98945] shrink-0" />
               <div className="min-w-0">
-                <div className="font-sans font-bold text-xs text-[#0A2747] truncate">ACWR Python Math</div>
-                <div className="text-[10px] font-mono text-[#B98945] font-bold truncate">Deterministic Tool</div>
+                <div className="font-sans font-bold text-xs text-[#0A2747] leading-tight truncate">ACWR Python Math Engine</div>
+                <div className="text-[11px] font-mono text-[#B98945] font-bold leading-tight truncate">Deterministic Load Tool</div>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2 min-w-0">
-              <Activity className="w-3.5 h-3.5 text-[#12375F] shrink-0" />
+            <div className="p-3 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-3">
+              <Activity className="w-4 h-4 text-[#12375F] shrink-0" />
               <div className="min-w-0">
-                <div className="font-sans font-bold text-xs text-[#0A2747] truncate">Metric Logger</div>
-                <div className="text-[10px] font-mono text-[#5A738E] truncate">Timestamped Record</div>
+                <div className="font-sans font-bold text-xs text-[#0A2747] leading-tight truncate">Metric Telemetry Logger</div>
+                <div className="text-[11px] font-mono text-[#5A738E] leading-tight truncate">Timestamped Audit Record</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Stacked Vertical Flow Container */}
+      {/* Mobile Vertical Stacked Layout */}
       <div className="block lg:hidden space-y-3">
-        {/* Step 1 */}
-        <div className="p-4 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-1">
-          <span className="font-mono text-[10px] text-[#5A738E] font-semibold block">1. USER QUERY</span>
+        <div className="p-4 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[10px] text-[#5A738E] font-bold">1. USER QUERY</span>
+            <span className="font-mono text-[9px] text-[#059669] bg-[#059669]/10 px-1.5 py-0.5 rounded font-bold">INPUT</span>
+          </div>
           <div className="font-sans font-bold text-sm text-[#0A2747]">Coach / Athlete Query</div>
-          <div className="text-[11px] font-mono text-[#5A738E]">Sports Science Input Telemetry</div>
+          <div className="text-xs font-mono text-[#5A738E]">Sports Science Input Telemetry</div>
         </div>
 
         <div className="flex justify-center text-[#059669] py-0.5">
-          <ArrowDown className="w-4 h-4" />
+          <ArrowDown className="w-4 h-4 stroke-[2.5]" />
         </div>
 
-        {/* Step 2 */}
-        <div className="p-4 rounded-lg bg-[#FFFEFA] border-2 border-[#059669] shadow-xs space-y-1.5">
+        <div className="p-4 rounded-xl bg-[#FFFEFA] border-2 border-[#059669] shadow-xs space-y-1.5">
           <div className="flex items-center justify-between">
             <span className="font-mono text-[10px] text-[#059669] font-bold">LANGGRAPH CORE</span>
             <Cpu className="w-4 h-4 text-[#059669] shrink-0" />
           </div>
           <div className="font-sans font-bold text-sm text-[#0A2747]">ReAct Agent &amp; Safety Router</div>
-          <div className="text-xs text-[#5A738E]">Evaluates intent, safety boundaries, &amp; selects tools</div>
+          <div className="text-xs text-[#5A738E]">Evaluates intent, safety boundaries, &amp; dispatches tools</div>
         </div>
 
         <div className="flex justify-center text-[#059669] py-0.5">
-          <ArrowDown className="w-4 h-4" />
+          <ArrowDown className="w-4 h-4 stroke-[2.5]" />
         </div>
 
-        {/* Step 3 */}
         <div className="space-y-2">
-          <div className="p-3 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2.5">
+          <div className="p-3.5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-3">
             <Database className="w-4 h-4 text-[#059669] shrink-0" />
             <div>
-              <div className="font-sans font-bold text-xs text-[#0A2747]">RAG Tool (ChromaDB Vector Store)</div>
-              <div className="text-[11px] font-mono text-[#5A738E]">56-Entry Knowledge Base Retrieval</div>
+              <div className="font-sans font-bold text-xs text-[#0A2747]">ChromaDB Vector Store (RAG Tool)</div>
+              <div className="text-[11px] font-mono text-[#5A738E]">56 Knowledge Base Chunks Retrieval</div>
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-[#B98945]/10 border border-[#B98945]/30 flex items-center gap-2.5">
+          <div className="p-3.5 rounded-xl bg-[#B98945]/10 border border-[#B98945]/30 flex items-center gap-3">
             <Calculator className="w-4 h-4 text-[#B98945] shrink-0" />
             <div>
               <div className="font-sans font-bold text-xs text-[#0A2747]">ACWR Python Math Engine</div>
@@ -123,7 +128,7 @@ export function AthleteIqArchSvg() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-2.5">
+          <div className="p-3.5 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.08)] flex items-center gap-3">
             <Activity className="w-4 h-4 text-[#12375F] shrink-0" />
             <div>
               <div className="font-sans font-bold text-xs text-[#0A2747]">Metric Telemetry Logger</div>
@@ -134,7 +139,7 @@ export function AthleteIqArchSvg() {
       </div>
 
       {/* Safety Escalation Box */}
-      <div className="p-4 rounded-lg bg-[#F6F3EC] border border-[#B98945]/40 space-y-2">
+      <div className="p-4 rounded-xl bg-[#F6F3EC] border border-[#B98945]/40 space-y-2">
         <div className="flex items-center gap-2 text-[#B98945]">
           <ShieldAlert className="w-4 h-4 shrink-0" />
           <span className="font-mono text-xs font-bold uppercase tracking-wider">

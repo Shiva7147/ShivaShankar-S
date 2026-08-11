@@ -25,11 +25,11 @@ export default function Home() {
               <div>
                 <div className="eyebrow block mb-2">COMPETENCY OVERVIEW</div>
                 <h2 className="heading-h2 text-[#0A2747]">
-                  Applied AI & System Engineering Stack
+                  Applied AI &amp; System Engineering Stack
                 </h2>
               </div>
               <Link href="/about" className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#12375F] hover:text-[#B98945] transition-colors">
-                <span>View Full About & Background</span>
+                <span>View Full About &amp; Background</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -53,18 +53,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. Projects Teaser (Titles, Summaries & Links to /projects) */}
+        {/* 4. Projects Teaser */}
         <section className="py-20 border-b border-[rgba(10,39,71,0.12)]">
           <div className="wrap">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
               <div>
                 <div className="eyebrow block mb-2">SELECTED WORK</div>
                 <h2 className="heading-h2 text-[#0A2747]">
-                  Production AI Systems & Case Studies
+                  Production AI Systems &amp; Case Studies
                 </h2>
               </div>
               <Link href="/projects" className="btn-primary text-xs py-2 px-4">
-                <span>View All 5 Projects & Architecture</span>
+                <span>View All 5 Projects &amp; Architecture</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -74,20 +74,20 @@ export default function Home() {
               {projectsData.map((project) => (
                 <div
                   key={project.id}
-                  className="editorial-card flex flex-col justify-between space-y-5 group hover:border-[#B98945] transition-all"
+                  className="p-6 rounded-xl bg-[#FFFEFA] border border-[rgba(10,39,71,0.12)] flex flex-col justify-between space-y-5 group hover:border-[#B98945] hover:shadow-md transition-all"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-[#B98945] font-bold px-2 py-0.5 bg-[#B98945]/10 rounded">
-                        PROJECT {project.number}
+                      <span className="font-mono text-xs text-[#B98945] font-bold px-2 py-0.5 bg-[#B98945]/10 rounded border border-[#B98945]/20">
+                        0{project.number}
                       </span>
-                      <span className="text-[10px] font-mono text-[#5A738E] uppercase">SYSTEM CASE STUDY</span>
+                      <span className="text-[10px] font-mono text-[#5A738E] uppercase tracking-wider font-semibold">SYSTEM CASE STUDY</span>
                     </div>
 
                     <h3 className="font-sans font-bold text-xl text-[#0A2747] group-hover:text-[#B98945] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="font-mono text-xs text-[#B98945] font-medium">{project.subtitle}</p>
+                    <p className="font-mono text-xs text-[#B98945] font-semibold">{project.subtitle}</p>
 
                     <p className="text-xs text-[#5A738E] leading-relaxed line-clamp-3">
                       {project.summary}
@@ -95,19 +95,19 @@ export default function Home() {
                   </div>
 
                   <div className="space-y-4 pt-3 border-t border-[rgba(10,39,71,0.08)]">
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.technologies.slice(0, 4).map((tech) => (
-                        <span key={tech} className="text-[10px] font-mono px-2 py-0.5 bg-[#F6F3EC] text-[#0A2747] rounded border border-[rgba(10,39,71,0.08)]">
+                        <span key={tech} className="text-[10px] font-mono px-2.5 py-0.5 bg-[#F6F3EC] text-[#0A2747] rounded border border-[rgba(10,39,71,0.08)] font-medium">
                           {tech}
                         </span>
                       ))}
                     </div>
 
                     <Link
-                      href={`/projects#${project.id}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#12375F] group-hover:text-[#B98945] transition-colors"
+                      href={`/projects/${project.slug}`}
+                      className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#12375F] group-hover:text-[#B98945] transition-colors uppercase tracking-wider"
                     >
-                      <span>Explore Architecture & Case Study</span>
+                      <span>VIEW CASE STUDY</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -126,7 +126,7 @@ export default function Home() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-2">
+              <div className="p-6 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-2">
                 <div className="flex items-center gap-2 text-[#0A2747] font-bold text-base">
                   <ShieldCheck className="w-4 h-4 text-[#B98945]" />
                   <span>Deterministic Boundaries</span>
@@ -136,10 +136,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="p-6 rounded bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-2">
+              <div className="p-6 rounded-xl bg-[#F6F3EC] border border-[rgba(10,39,71,0.12)] space-y-2">
                 <div className="flex items-center gap-2 text-[#0A2747] font-bold text-base">
                   <Cpu className="w-4 h-4 text-[#12375F]" />
-                  <span>Human Oversight & Safety Bypass</span>
+                  <span>Human Oversight &amp; Safety Bypass</span>
                 </div>
                 <p className="text-xs text-[#5A738E] leading-relaxed">
                   Responsible AI design knows when to pause, skip retrieval, or immediately escalate to human professionals in health-adjacent or sensitive domains.
